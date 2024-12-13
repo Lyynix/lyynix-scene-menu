@@ -1,0 +1,60 @@
+{
+  "id": "module",
+  "title": "New Module",
+  "description": "",
+  "version": "#{VERSION}#",
+  "compatibility": {
+    "minimum": 12,
+    "verified": 12
+  },
+  "authors": [
+    {
+      "name": "Lyynix",
+      "discord": "lyynix"
+    }
+  ],
+  "media": [
+    {
+      "type": "setup",
+      "url": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp",
+      "thumbnail": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp"
+    }
+  ],
+  "packs": [
+    {
+      "name": "module-introduction",
+      "label": "Module Introduction",
+      "path": "./packs/journals",
+      "type": "JournalEntry"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Lyynix: Journals",
+      "sorting": "m",
+      "packs": ["module-introduction"]
+    }
+  ],
+  "relationships": {
+    "systems": [],
+    "requires": []
+  },
+  "esmodules": [
+    "scripts/init.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "license": "LICENSE",
+  "readme": "README.md"
+}
