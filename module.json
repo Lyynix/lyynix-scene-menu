@@ -1,60 +1,96 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "lyynix-scene-menu",
+  "title": "Lyynix: Scene Menu",
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": 12,
-    "verified": 12
+    "minimum": "12",
+    "verified": "12"
   },
   "authors": [
     {
       "name": "Lyynix",
-      "discord": "lyynix"
+      "discord": "lyynix",
+      "flags": {}
     }
   ],
   "media": [
     {
       "type": "setup",
       "url": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp",
-      "thumbnail": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp"
+      "thumbnail": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp",
+      "loop": false,
+      "flags": {}
     }
   ],
   "packs": [
     {
-      "name": "module-introduction",
-      "label": "Module Introduction",
-      "path": "./packs/journals",
-      "type": "JournalEntry"
+      "name": "lyynix-fohrenhain-module",
+      "label": "Lyynix: Föhrenhain Module",
+      "path": "packs/journals",
+      "type": "Adventure",
+      "system": "dsa5",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "lyynix-fohrenhain-journals",
+      "label": "Lyynix: Föhrenhain Journals",
+      "path": "packs/lyynix-fohrenhain-journals",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "packFolders": [
     {
       "name": "Lyynix: Journals",
       "sorting": "m",
-      "packs": ["module-introduction"]
+      "color": null,
+      "folders": [
+        {
+          "name": "Lyynix: Föhrenhain Module",
+          "sorting": "m",
+          "packs": [
+            "lyynix-fohrenhain-module",
+            "lyynix-fohrenhain-journals"
+          ],
+          "color": null,
+          "folders": []
+        }
+      ],
+      "packs": []
     }
   ],
-  "relationships": {
-    "systems": [],
-    "requires": []
-  },
   "esmodules": [
-    "scripts/init.js"
+    "scripts/lyynixMapMenu.js"
   ],
   "styles": [
     "styles/module.css"
   ],
   "languages": [
     {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "languages/de.json",
+      "flags": {}
     }
   ],
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "license": "LICENSE",
-  "readme": "README.md"
+  "readme": "README.md",
+  "relationships": {
+    "required": [
+      {
+        "id": "tagger",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  }
 }

@@ -1,0 +1,58 @@
+.fa-lyynix:before {
+  content: "";
+  background-image: url("../assets/LyynixIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.fa-lyynix {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+#controls ol.control-tools.sub-controls {
+  & li.control-tool[data-tool="lyynix-separator"] {
+    height: 25px;
+    width: 70px;
+    font-size: 12pt;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  &
+    li.control-tool[data-tool="lyynix-separator"][aria-label="Kacheln"]::before {
+    content: "Kacheln";
+  }
+  &
+    li.control-tool[data-tool="lyynix-separator"][aria-label="Lichter"]::before {
+    content: "Lichter";
+  }
+}
+
+li.control-tool:not(.active)[data-tool="Scriptorium"]
+  .lyynix-tile-button:before {
+  content: "\f070";
+}
+li.control-tool:not(.active)[data-tool="Frame"] .lyynix-tile-button:before {
+  content: "\f850";
+}
+li.control-tool:not(.active)[data-tool="sun-toggle"] .lyynix-tile-button:before {
+  content: "\f186";
+  font-weight: 900;
+}
+
+/* set active light to normal lightbulb*/
+li.control-tool.active .fa-regular.fa-tents:before,
+li.control-tool.active .fa-regular.fa-fence:before,
+li.control-tool.active .fa-regular.fa-lightbulb:before,
+li.control-tool.active .fa-regular.fa-lamp-street:before {
+  font-weight: 900;
+}
+
+dialog.application.dialog.lyynixMapMenuDialog section.window-content {
+  overflow: auto;
+}
