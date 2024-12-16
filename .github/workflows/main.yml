@@ -112,14 +112,9 @@ jobs:
       # your packaged module, add them here.
       - name: Create Module Archive
         run: |
-          # Note that `zip` will only emit warnings when a file or directory
-          # doesn't exist, it will not fail.
           zip                                    \
-            `# Options`                          \
             --recurse-paths                      \
-            `# The name of the output file`      \
-             ./lsm.zip                           \ 
-            `# The files that will be included.` \
+             ./lsm.zip                           \
             module.json                          \
             README.md                            \
             LICENSE                              \
