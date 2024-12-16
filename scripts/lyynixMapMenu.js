@@ -213,7 +213,7 @@ function getTools(tagConfig) {
     icon: "fa-solid fa-shop",
     onClick: async () => {
       let content = await renderTemplate(
-        "modules/lyynix-foehrenhain-module/templates/lights.hbs",
+        TEMPLATES.lights,
         {
           districts: tagConfig.lights.districtTags.map((dTag) => {
             log(dTag, tagConfig.lights.specialTagsbyDistricts);
