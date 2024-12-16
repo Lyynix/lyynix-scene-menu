@@ -1,0 +1,11 @@
+<form>
+  <fieldset>
+    <legend>{{header}}</legend>
+    {{#each tags as |tag|}}
+    <div class="form-group">
+      <span style="min-width: 100px;">{{tag}}</span>
+      <button type="button" onclick="lyynixMapMenu.toggleTile('{{tag}}')">Umschalten</button>
+    </div>
+    {{/each}}
+  </fieldset>
+</form>
