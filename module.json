@@ -13,71 +13,11 @@
       "flags": {}
     }
   ],
-  "media": [
-    {
-      "type": "setup",
-      "url": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp",
-      "thumbnail": "modules/lyynix-more-journal-enrichers/assets/thumbs/setup.webp",
-      "loop": false,
-      "flags": {}
-    }
-  ],
-  "packs": [
-    {
-      "name": "lyynix-fohrenhain-module",
-      "label": "Lyynix: Föhrenhain Module",
-      "path": "packs/journals",
-      "type": "Adventure",
-      "system": "dsa5",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "name": "lyynix-fohrenhain-journals",
-      "label": "Lyynix: Föhrenhain Journals",
-      "path": "packs/lyynix-fohrenhain-journals",
-      "type": "JournalEntry",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    }
-  ],
-  "packFolders": [
-    {
-      "name": "Lyynix: Journals",
-      "sorting": "m",
-      "color": null,
-      "folders": [
-        {
-          "name": "Lyynix: Föhrenhain Module",
-          "sorting": "m",
-          "packs": [
-            "lyynix-fohrenhain-module",
-            "lyynix-fohrenhain-journals"
-          ],
-          "color": null,
-          "folders": []
-        }
-      ],
-      "packs": []
-    }
-  ],
   "esmodules": [
     "scripts/lyynixMapMenu.js"
   ],
   "styles": [
     "styles/module.css"
-  ],
-  "languages": [
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "languages/de.json",
-      "flags": {}
-    }
   ],
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
@@ -85,7 +25,7 @@
   "license": "LICENSE",
   "readme": "README.md",
   "relationships": {
-    "required": [
+    "requires": [
       {
         "id": "tagger",
         "type": "module",
