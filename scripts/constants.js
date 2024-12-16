@@ -20,3 +20,8 @@ export const CONST = Object.freeze({
     ]
   },
 })
+
+export const TEMPLATES = Object.freeze({
+  lights: "modules/lyynix-scene-menu/templates/lights.hbs",
+  tiles: "modules/lyynix-scene-menu/templates/tiles.hbs"
+})

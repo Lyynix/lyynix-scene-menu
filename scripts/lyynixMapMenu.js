@@ -1,4 +1,4 @@
-import { CONST } from "./constants.js";
+import { CONST, TEMPLATES } from "./constants.js";
 
 Hooks.once("init", async function () {
   CONFIG.Canvas.layers.lyynixmapmenu = {
@@ -6,7 +6,7 @@ Hooks.once("init", async function () {
     group: "interface",
   };
 
-  loadTemplates(["modules/lyynix-foehrenhain-module/templates/lights.hbs"]);
+  loadTemplates(Object.values(TEMPLATES));
 });
 
 Hooks.once("ready", async function () {});
@@ -114,7 +114,7 @@ function getTools(tagConfig) {
         icon: "fa-solid fa-layer-plus",
         onClick: async () => {
           let content = await renderTemplate(
-            "modules/lyynix-foehrenhain-module/templates/tiles.hbs",
+            TEMPLATES.tiles,
             {
               header: "Zusätzliche Kacheln",
               tags: tagConfig.tiles.scenicTiles,
@@ -182,7 +182,7 @@ function getTools(tagConfig) {
     icon: "fa-regular fa-chart-network",
     onClick: async () => {
       let content = await renderTemplate(
-        "modules/lyynix-foehrenhain-module/templates/lights.hbs",
+        TEMPLATES.lights,
         {
           districts: [
             { name: "Stadtteile", tags: tagConfig.lights.districtTags },
