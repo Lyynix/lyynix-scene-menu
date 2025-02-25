@@ -103,7 +103,7 @@ function getTools(tagConfig) {
     if (tagConfig.tiles.scenicTiles.length < 4) {
       tagConfig.tiles.scenicTiles.forEach((tile) => {
         tools.push(
-          tileTool(tagConfig.tiles.frameTileTag, CONST.frameTileTooltipConfig)
+          tileTool(tile.tag, CONST.frameTileTooltipConfig, tile.icon)
         );
       });
     } else {
@@ -117,7 +117,7 @@ function getTools(tagConfig) {
             TEMPLATES.tiles,
             {
               header: "Zusätzliche Kacheln",
-              tags: tagConfig.tiles.scenicTiles,
+              tags: tagConfig.tiles.scenicTiles.map(tile => tile.tag),
             }
           );
           new foundry.applications.api.DialogV2({
@@ -171,6 +171,15 @@ function getTools(tagConfig) {
         tagConfig.lights.residenceTag,
         "Wohnhäuser",
         "fa-regular fa-tents"
+      )
+    );
+  }
+  if (tagConfig.lights.residenceTag) {
+    tools.push(
+      lightTool(
+        tagConfig.lights.residenceTag,
+        "Reduziertes Licht",
+        "fa-regular fa-percent"
       )
     );
   }
