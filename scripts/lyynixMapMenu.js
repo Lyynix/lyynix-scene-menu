@@ -174,15 +174,6 @@ function getTools(tagConfig) {
       )
     );
   }
-  if (tagConfig.lights.residenceTag) {
-    tools.push(
-      lightTool(
-        tagConfig.lights.residenceTag,
-        "Reduziertes Licht",
-        "fa-regular fa-percent"
-      )
-    );
-  }
 
   tools.push({
     button: true,
