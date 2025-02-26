@@ -42,6 +42,10 @@ ol#tools-panel-lyynixmapmenu li.control-tool:not(.active)[data-tool="sun-toggle"
   content: "\f186";
   font-weight: 900;
 }
+ol#tools-panel-lyynixmapmenu li.control-tool:not(.active)[data-tool="Frame"] .lyynix-tile-button:before {
+  content: "\f850";
+  font-weight: 400;
+}
 
 /* set active light to normal lightbulb*/
 ol#tools-panel-lyynixmapmenu li.control-tool.active i:before {
