@@ -19,7 +19,7 @@
 #controls ol.control-tools.sub-controls {
   & li.control-tool[data-tool="lyynix-separator"] {
     height: 25px;
-    width: 70px;
+    width: 80px;
     font-size: 12pt;
     background: rgba(0, 0, 0, 0.7);
   }
@@ -37,23 +37,13 @@
   }
 }
 
-/* li.control-tool:not(.active)[data-tool="Scriptorium"]
-  .lyynix-tile-button:before {
-  content: "\f070";
-}
-li.control-tool:not(.active)[data-tool="Frame"] .lyynix-tile-button:before {
-  content: "\f850";
-}
-li.control-tool:not(.active)[data-tool="sun-toggle"] .lyynix-tile-button:before {
+
+ol#tools-panel-lyynixmapmenu li.control-tool:not(.active)[data-tool="sun-toggle"] .lyynix-tile-button:before {
   content: "\f186";
   font-weight: 900;
-} */
+}
 
 /* set active light to normal lightbulb*/
-/* li.control-tool.active .fa-regular.fa-tents:before,
-li.control-tool.active .fa-regular.fa-fence:before,
-li.control-tool.active .fa-regular.fa-lightbulb:before,
-li.control-tool.active .fa-regular.fa-lamp-street:before { */
 ol#tools-panel-lyynixmapmenu li.control-tool.active i:before {
   font-weight: 900;
 }
