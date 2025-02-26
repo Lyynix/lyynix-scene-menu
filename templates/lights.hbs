@@ -11,9 +11,9 @@
     {{#each district.tags as |tag|}}
     <div class="form-group">
       <span style="min-width: 100px;">{{tag}}</span>
-      <button type="button" onclick="lyynixMapMenu.setByTag('{{tag}}', true)">On</button>
-      <button type="button" onclick="lyynixMapMenu.setByChance('{{tag}}', 0.5)">50%</button>
-      <button type="button" onclick="lyynixMapMenu.setByTag('{{tag}}', false)">Off</button>
+      <button type="button" onclick="lyynixMapMenu.setByTag('{{escape tag}}', true)">On</button>
+      <button type="button" onclick="lyynixMapMenu.setByChance('{{escape tag}}', 0.5)">50%</button>
+      <button type="button" onclick="lyynixMapMenu.setByTag('{{escape tag}}', false)">Off</button>
     </div>
     {{/each}}
   </fieldset>

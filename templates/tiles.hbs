@@ -4,7 +4,7 @@
     {{#each tags as |tag|}}
     <div class="form-group">
       <span style="min-width: 100px;">{{tag}}</span>
-      <button type="button" onclick="lyynixMapMenu.toggleTile('{{tag}}')">Umschalten</button>
+      <button type="button" onclick="lyynixMapMenu.toggleTile('{{escape tag}}')">Umschalten</button>
     </div>
     {{/each}}
   </fieldset>

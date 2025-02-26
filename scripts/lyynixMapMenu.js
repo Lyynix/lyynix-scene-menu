@@ -9,7 +9,11 @@ Hooks.once("init", async function () {
   loadTemplates(Object.values(TEMPLATES));
 });
 
-Hooks.once("ready", async function () {});
+Hooks.once("ready", async function () {
+  Handlebars.registerHelper('escape', function(variable) {
+    return variable.replace(/(['"])/g, '\\$1');
+  });
+});
 
 Hooks.on("getSceneControlButtons", (controls) => {
   // log(controls);
