@@ -32,6 +32,8 @@ Hooks.on("getSceneControlButtons", (controls) => {
     tools = getTools(tagConfig);
   } catch (e) {
     // insert dummy tool if error occurs (probably when Tagger is loaded after Map Module)
+    console.error("LSM:", e);
+    
     tools = [{ name: "dummy", title: "dummy", icon: "fa fa-lyynix" }];
   }
 
@@ -84,7 +86,7 @@ function getTools(tagConfig) {
       tileTool(
         tagConfig.tiles.scriptoriumTileTag,
         "Scriptorium Aventuris",
-        "fas fa-eye"
+        "fa-regular fa-eye"
       )
     );
   }
@@ -93,7 +95,7 @@ function getTools(tagConfig) {
       tileTool(
         tagConfig.tiles.frameTileTag,
         "Rahmen",
-        "fa-solid fa-border-outer"
+        "fa-regular fa-border-outer"
       )
     );
   }
@@ -174,7 +176,55 @@ function getTools(tagConfig) {
       )
     );
   }
+  // Additional Lights
+  if (tagConfig.lights.scenicLights) {
+    if (tagConfig.lights.scenicLights.length < 4) {
+      tagConfig.lights.scenicLights.forEach((light) => {
+        tools.push(
+          lightTool(light.tag, CONST.frameTileTooltipConfig, light.icon)
+        );
+      });
+    } else {
+      tools.push({
+        button: true,
+        name: "scenicTiles",
+        title: "Zusätzliche Kacheln",
+        icon: "fa-solid fa-layer-plus",
+        onClick: async () => {
+          let content = await renderTemplate(
+            TEMPLATES.lights,
+            {
+              header: "Zusätzliche Kacheln",
+              tags: tagConfig.light.scenicLights.map(light => light.tag),
+            }
+          );
+          new foundry.applications.api.DialogV2({
+            window: { title: "Zusätzliche Lichter" },
+            content: content,
+            buttons: [
+              {
+                action: "close",
+                label: "Schließen",
+                default: true,
+              },
+            ],
+            position: { left: 145, top: 73, height: "auto", width: 330 },
+            submit: () => {},
+          }).render({ force: true });
+        },
+      });
+    }
+  }
 
+
+  // Separator Districts
+  tools.push({
+    name: "lyynix-separator",
+    title: "Stadtteile",
+    icon: "",
+    button: true,
+    toolclip: CONST.lightsTooltipConfig,
+  });
   tools.push({
     button: true,
     name: "districts",
@@ -261,7 +311,7 @@ function lightTool(
   };
 }
 
-function tileTool(tileTag, title = tileTag, icon = "fa-solid fa-cube") {
+function tileTool(tileTag, title = tileTag, icon = "fa-regular fa-cube") {
   return {
     toggle: true,
     active: Tagger ? Tagger.getByTag(tileTag)[0].alpha > 0.5 : false,
