@@ -11,12 +11,29 @@ zuerst baust du dir selbst eine JSON zusammen, die die folgende Struktur besitzt
 	"tiles": {
 		"scriptoriumTileTag": "Der Tag deiner Scriptorium-Kachel", 
 		"frameTileTag": "Der Tag deiner Rahmen-Kachel",
-		"scenicTiles": [ "Zusätzliche", "Kacheln", ... ],
+		"scenicTiles": [
+			{
+				"tag": "Zusätzliche Kachel",
+				"icon": "fa-regular fa-icon"
+		    	},
+			{
+				...
+			}
+		],
 	},
 	"lights": {
 		"lanternTag": "Der Tag deiner Laternen-Lichter",
 		"residenceTag": "Der Tag deiner Wohnhäuser-Lichter",
-    "citywallTag": "Der Tag deiner Stadtmauer-Lichter",
+    		"citywallTag": "Der Tag deiner Stadtmauer-Lichter",
+		"scenicLights": [
+			{
+				"tag": "Zusätzliches Licht",
+				"icon": "fa-regular fa-icon"
+		    	},
+			{
+				...
+			}
+		],
 		"districtTags": [ "Stadtviertel", ... ],
 		"specialTagsbyDistricts": {
 			"Stadtviertel": ["Spezielle Tags", ...], //Stadtviertel hier müssen mit Stadtviertel aus "districtTags" übereinstimmen
