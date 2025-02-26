@@ -38,7 +38,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
     // insert dummy tool if error occurs (probably when Tagger is loaded after Map Module)
     console.error("LSM:", e);
     
-    tools = [{ name: "dummy", title: "dummy", icon: "fa fa-lyynix" }];
+    tools = [{ name: "dummy", title: "Etwas ist schief gelaufen", icon: "fa fa-lyynix" }];
   }
 
   if (controls) {
@@ -167,7 +167,7 @@ function getTools(tagConfig) {
       lightTool(
         tagConfig.lights.citywallTag,
         "Stadtmauer",
-        "fa-regular fa-fence"
+        "fa-regular fa-fort"
       )
     );
   }
