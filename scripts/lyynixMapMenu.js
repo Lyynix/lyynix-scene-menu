@@ -1,19 +1,52 @@
 import { CONST, TEMPLATES } from "./constants.js";
+import { MapMenuEditorApplication } from "./editor.js";
+
+class LyynixMapMenuLayer extends InteractionLayer {
+  static get layerOptions() {
+    return foundry.utils.mergeObject(super.layerOptions, {
+      name: "lyynixmapmenu",
+      canDragCreate: false,
+      controllableObjects: true,
+      rotatableObjects: true,
+      zIndex: 777,
+    });
+  }
+
+  selectObjects(options) {
+    canvas.tokens.selectObjects(options);
+  }
+}
 
 Hooks.once("init", async function () {
+  loadTemplates(Object.values(TEMPLATES));
+});
+
+Hooks.once("setup", () => {
   CONFIG.Canvas.layers.lyynixmapmenu = {
     layerClass: LyynixMapMenuLayer,
     group: "interface",
   };
-
-  loadTemplates(Object.values(TEMPLATES));
-});
+})
 
 Hooks.once("ready", async function () {
-  Handlebars.registerHelper('escape', function(variable) {
+  Handlebars.registerHelper('escape', function (variable) {
     return variable.replace(/(['"])/g, '\\$1');
   });
 });
+
+Hooks.on("getSceneNavigationContext", (nav, options) => {
+  let newOption = {
+    "name": "Edit Scene Menu",
+    "icon": "<i class=\"fas fa-money-check-pen\"></i>",
+    "condition": li => game.user.isGM,
+    "callback": li => {
+      let app = new MapMenuEditorApplication()
+      app.setScene(game.scenes.get(li.data("sceneId")))
+      app.render(true);
+    }
+  }
+  options.push(newOption)
+})
 
 Hooks.on("getSceneControlButtons", (controls) => {
   // log(controls);
@@ -37,7 +70,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
   } catch (e) {
     // insert dummy tool if error occurs (probably when Tagger is loaded after Map Module)
     console.error("LSM:", e);
-    
+
     tools = [{ name: "dummy", title: "Etwas ist schief gelaufen", icon: "fa fa-lyynix" }];
   }
 
@@ -137,7 +170,7 @@ function getTools(tagConfig) {
               },
             ],
             position: { left: 145, top: 73, height: "auto", width: 330 },
-            submit: () => {},
+            submit: () => { },
           }).render({ force: true });
         },
       });
@@ -213,7 +246,7 @@ function getTools(tagConfig) {
               },
             ],
             position: { left: 145, top: 73, height: "auto", width: 330 },
-            submit: () => {},
+            submit: () => { },
           }).render({ force: true });
         },
       });
@@ -254,7 +287,7 @@ function getTools(tagConfig) {
           },
         ],
         position: { left: 145, top: 73, height: "auto", width: 330 },
-        submit: () => {},
+        submit: () => { },
       }).render({ force: true });
     },
   });
@@ -290,7 +323,7 @@ function getTools(tagConfig) {
         ],
         classes: ["lyynixMapMenuDialog"],
         position: { left: 145, top: 73, height: "auto", width: 330 },
-        submit: () => {},
+        submit: () => { },
       }).render({ force: true });
     },
   });
@@ -380,22 +413,6 @@ window.lyynixMapMenu = {
   setByChance: setByChance,
 };
 
-class LyynixMapMenuLayer extends InteractionLayer {
-  static get layerOptions() {
-    return foundry.utils.mergeObject(super.layerOptions, {
-      name: "lyynixmapmenu",
-      canDragCreate: false,
-      controllableObjects: true,
-      rotatableObjects: true,
-      zIndex: 777,
-    });
-  }
-
-  selectObjects(options) {
-    canvas.tokens.selectObjects(options);
-  }
-}
-
 function log(...params) {
-  console.log("Lyynix |", ...params);
+  console.log("LSM |", ...params);
 }

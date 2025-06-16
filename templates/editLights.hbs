@@ -1,0 +1,125 @@
+<section class='tab lights {{tab.cssClass}}' data-group='primary' data-tab='lights' style="overflow-y: scroll;">
+  <hr>
+  <fieldset>
+    <legend>Generelle Lichter</legend>
+    <label for="lanternTag">Tag für Laternen</label>
+    <input type="text" name="lanternTag" id="lanternTag" value="{{tags.lights.lanternTag}}">
+    <label for="citywallTag">Tag der Stadtmauer</label>
+    <input type="text" name="citywallTag" id="citywallTag" value="{{tags.lights.citywallTag}}">
+    <label for="residenceTag">Tag der Wohnhäuser</label>
+    <input type="text" name="residenceTag" id="residenceTag" value="{{tags.lights.residenceTag}}">
+  </fieldset>
+  <fieldset>
+    <legend>Zusätzliche Lichter</legend>
+    {{#each tags.lights.scenicLights as |scenicLight|}}
+    <fieldset>
+      <legend>{{scenicLight.tag}}</legend>
+      <input type="text" name="{{scenicLight.icon}}Icon" id="{{scenicLight.icon}}Icon" value="{{scenicLight.icon}}">
+      <input type="text" name="{{scenicLight.tag}}Tag" id="{{scenicLight.tag}}Tag" value="{{scenicLight.tag}}">
+    </fieldset>
+    {{/each}} 
+    <hr>
+    <fieldset>
+      <legend>Neues Licht hinzufügen</legend>
+      <input type="text" name="newScenicLightIcon" id="newScenicLightIcon" placeholder="Icon" value="fa-regular fa-lightbulb">
+      <input type="text" name="newScenicLightTag" id="newScenicLightTag" placeholder="Lichter Tag">
+    </fieldset>
+  </fieldset>
+  <fieldset>
+    <legend>Stadtteile</legend>
+    {{#each tags.lights.districtTags as |districtTag|}}
+    <input type="text" name="{{districtTag}}" id="{{districtTag}}" value="{{districtTag}}">
+    {{/each}}
+    <hr>
+    <input type="text" name="newDistrictTag" id="newDistrictTag" placeholder="Stadtteil hinzufügen">
+  </fieldset>
+  <fieldset>
+    <legend>Stadtteil-Lichter</legend>
+  {{#each tags.lights.specialTagsbyDistricts}}
+    <fieldset> 
+      <legend>{{@key}}</legend>
+      {{#each this as |tag|}}
+      <input type="text" name="{{@key}}{{tag}}" id="{{@key}}{{tag}}" value="{{tag}}">
+      {{/each}}
+      <hr>
+      <input type="text" name="{{@key}}newTag" id="{{@key}}newTag" placeholder="Licht zu {{@key}} hinzufügen">
+    </fieldset>
+  {{/each}}
+  </fieldset>
+</section>
+
+
+<!--
+{
+"lanternTag": "Laterne",
+"residenceTag": "Wohnhaus",
+"districtTags": [
+"Alt-Angbar",
+"Barschensee",
+"Neue Bastey",
+"Neumarkt",
+"Fürstenufer",
+"Heimeling",
+"Inglut",
+"Kruming"
+],
+"specialTagsbyDistricts": {
+"Alt-Angbar": [
+"Alter Borontempel",
+"Halle der Kämpfer",
+"Schänke Brauhaus",
+"Tempel des ehrbaren Handels",
+"Tempel der weisen Lehre",
+"Türmerhaus",
+"Wirtshaus Galoschs Steinerweicher",
+"Zitadelle"
+],
+"Barschensee": [
+"Meister-Aldur-Spital",
+"Tante Goswines Waisenhaus",
+"Traviatempel",
+"Grevenhof"
+],
+"Neue Bastey": [
+"Bordell 'Torhaus'"
+],
+"Neumarkt": [
+"Eberwulfshof",
+"Haus der Zünfte",
+"Hotel Haus Sirbensack",
+"Patriarchenpalais / Neue Vogtei",
+"Tempel des Götterfürsten"
+],
+"Fürstenufer": [
+"Neues Theater",
+"Schloss Thalessia"
+],
+"Heimeling": [
+"Gaststuben Aventuriens"
+],
+"Inglut": [
+"Horwyns Hort",
+"Hammerwerk des Grawallosch",
+"Kristallkabinett",
+"Minen",
+"Platz des Feuers",
+"Schlosser Bolzer Drosselstein",
+"Talerburg",
+"Tempel der ewigen Flamme"
+],
+"Kruming": [
+"Angbarer Puppenbühne"
+]
+},
+"scenicLights": [
+{
+"tag": "Boot",
+"icon": "fa-regular fa-sailboat"
+},
+{
+"tag": "Platz des Feuers",
+"icon": "fa-regular fa-fire-flame-curved"
+}
+],
+"citywallTag": "Mauer"
+}

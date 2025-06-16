@@ -1,0 +1,38 @@
+<section class='tab tiles {{tab.cssClass}}' data-group='primary' data-tab='tiles' style="overflow-y: scroll;">
+  <hr>
+  <fieldset>
+    <legend>Generelle Lichter</legend>
+    <label for="scriptoriumTileTag">Tag für Scriptorium Logo</label>
+    <input type="text" name="scriptoriumTileTag" id="scriptoriumTileTag" value="{{tags.tiles.scriptoriumTileTag}}">
+    <label for="frameTileTag">Tag für den Kartenrahmen</label>
+    <input type="text" name="frameTileTag" id="frameTileTag" value="{{tags.tiles.frameTileTag}}">
+  </fieldset>
+  <fieldset>
+    <legend>Zusätzliche Kacheln</legend>
+    {{#each tags.tiles.scenicTiles as |scenicTile|}}
+    <fieldset>
+      <legend>{{scenicTile.tag}}</legend>
+      <input type="text" name="{{scenicTile.icon}}Icon" id="{{scenicTile.icon}}Icon" value="{{scenicTile.icon}}">
+      <input type="text" name="{{scenicTile.tag}}Tag" id="{{scenicTile.tag}}Tag" value="{{scenicTile.tag}}">
+    </fieldset>
+    {{/each}} 
+    <hr>
+    <fieldset>
+      <legend>Neue Kachel hinzufügen</legend>
+      <input type="text" name="newScenicTileIcon" id="newScenicTileIcon" placeholder="Icon" value="fa-regular fa-cube">
+      <input type="text" name="newScenicTileTag" id="newScenicTileTag" placeholder="Kachel Tag">
+    </fieldset>
+  </fieldset>
+</section>
+
+<!--
+{
+    "scriptoriumTileTag": "Scriptorium",
+    "frameTileTag": "Frame",
+    "scenicTiles": [
+        {
+            "tag": "Kampfarena - Baustelle",
+            "icon": "fa-regular fa-person-digging"
+        }
+    ]
+}
