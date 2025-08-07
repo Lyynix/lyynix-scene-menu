@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Foundry-v12-informational)
+![](https://img.shields.io/badge/Foundry-v13-informational)
 
 
 # Dieses Modul dient als Abhängigkeit für meine Kartenmodule
