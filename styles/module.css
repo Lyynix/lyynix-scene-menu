@@ -1,57 +1,77 @@
 .fa-lyynix:before {
   content: "";
-  background-image: url("../assets/LyynixIcon.png");
+  background: url("../assets/LyynixIcon.png") center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-origin: content-box;
   position: absolute;
+  padding: 3px;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
 }
+
 .fa-lyynix {
   position: relative;
-  width: 25px;
-  height: 25px;
 }
 
-#controls ol.control-tools.sub-controls {
-  & li.control-tool[data-tool="lyynix-separator"] {
+#scene-controls menu#scene-controls-tools {
+  & li button.lyynixSeparator {
     height: 25px;
     width: 80px;
     font-size: 12pt;
-    background: rgba(0, 0, 0, 0.7);
+    font-family: var(--font-serif);
+    background: var(--control-icon-color);
+    color: var(--control-hover-border-color);
   }
-  &
-    li.control-tool[data-tool="lyynix-separator"][aria-label="Kacheln"]::before {
+
+  & li button.lyynixSeparator[data-tool="lyynixSeparator1"] {
+    border-color: var(--color-warm-1);
+  }
+
+  & li button.lyynixSeparator[data-tool="lyynixSeparator1"]::before {
     content: "Kacheln";
   }
-  &
-    li.control-tool[data-tool="lyynix-separator"][aria-label="Lichter"]::before {
+
+  & li button.lyynixSeparator[data-tool="lyynixSeparator2"] {
+    border-color: var(--color-warm-2);
+  }
+
+  & li button.lyynixSeparator[data-tool="lyynixSeparator2"]::before {
     content: "Lichter";
   }
-  &
-    li.control-tool[data-tool="lyynix-separator"][aria-label="Stadtteile"]::before {
+
+  & li button.lyynixSeparator[data-tool="lyynixSeparator3"] {
+    border-color: var(--color-warm-3);
+  }
+
+  & li button.lyynixSeparator[data-tool="lyynixSeparator3"]::before {
     content: "Stadtteile";
   }
 }
 
 
-ol#tools-panel-lyynixmapmenu li.control-tool:not(.active)[data-tool="sun-toggle"] .lyynix-tile-button:before {
+menu#scene-controls-tools li .lyynix-scene-button[data-tool="SunToggle"][aria-pressed="false"]:before {
   content: "\f186";
   font-weight: 900;
 }
-ol#tools-panel-lyynixmapmenu li.control-tool:not(.active)[data-tool="Frame"] .lyynix-tile-button:before {
+
+menu#scene-controls-tools li .lyynix-scene-button[data-tool="Frame"][aria-pressed="true"]:before {
   content: "\f850";
   font-weight: 400;
 }
 
 /* set active light to normal lightbulb*/
-ol#tools-panel-lyynixmapmenu li.control-tool.active i:before {
+menu#scene-controls-tools li .lyynix-scene-button[aria-pressed="true"]:before {
   font-weight: 900;
+  color: var(--color-text-selection);
 }
 
 dialog.application.dialog.lyynixMapMenuDialog section.window-content {
   overflow: auto;
+}
+
+#ui-left {
+  --control-size: 60px !important;
 }
