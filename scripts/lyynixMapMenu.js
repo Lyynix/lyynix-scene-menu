@@ -42,9 +42,9 @@ class LyynixMapMenuLayer extends foundry.canvas.layers.InteractionLayer {
     let tagConfig = game.scenes.current.getFlag("dsa5", "lyynix-map-tags");
     if (!tagConfig) {
       // only show if scene has config
-      if (game.canvas.lyynixmapmenu.active)
+      if (game.canvas.lyynixmapmenu?.active)
         // if scene doesn't have flags, and tool is active, deactivate token tool
-        game.canvas.tokens.activate();
+        game.canvas.tokens?.activate();
       return;
     }
 
