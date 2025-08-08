@@ -75,3 +75,16 @@ dialog.application.dialog.lyynixMapMenuDialog section.window-content {
 #ui-left {
   --control-size: 60px !important;
 }
+
+section.lsmEditor section.tab fieldset {
+  gap: 0px;
+  & label:not(:first-of-type) {
+    margin-top: 0.5rem;
+  }
+  & input:not(:last-child) {
+    margin-bottom: 0.3rem;
+  }
+  & input:placeholder-shown:not(.newTag) {
+    border: 3px solid red;
+  }
+}

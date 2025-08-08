@@ -21,10 +21,9 @@ export class MapMenuEditorApplication extends HandlebarsApplicationMixin(Applica
   static DEFAULT_OPTIONS = {
     position: { width: 500, top: 0 },
     window: {
-      icon: "fas fa-money-check-pen",
-      contentClasses: ["standard-form"]
+      contentClasses: ["standard-form", "lsmEditor"]
     },
-    classes: ["standard-form"],
+    // classes: ["standard-form"],
     tag: "form",
     form: {
       handler: MapMenuEditorApplication.formHandler,
@@ -42,11 +41,13 @@ export class MapMenuEditorApplication extends HandlebarsApplicationMixin(Applica
 
   async _prepareContext(options) {
     let context = await super._prepareContext(options);
+
+    let scene = game.scenes.current
   
     context = foundry.utils.mergeObject(context, {
       tabs: this._getTabs(options.parts),
-      name: this.scene.name,
-      tags: this.scene.flags.dsa5["lyynix-map-tags"]
+      name: scene.name,
+      tags: scene.flags.dsa5["lyynix-map-tags"]
     });
 
     console.log("LSM | prepared context:", context);
@@ -111,7 +112,74 @@ export class MapMenuEditorApplication extends HandlebarsApplicationMixin(Applica
    */
   static async formHandler(event, form, formData) {
     console.log("LSM |", event, form, formData);
-    
+
+    let scene = game.scenes.current
+    let tags = scene.getFlag("dsa5", "lyynix-map-tags")
+
+    // transfer lights
+    // transfer basic lights
+    tags.lights.lanternTag = formData.object.lanternTag
+    tags.lights.citywallTag = formData.object.citywallTag
+    tags.lights.residenceTag = formData.object.residenceTag
+
+    // transfer scenic lights
+    tags.lights.scenicLights.forEach(light => {
+      light.tag = formData.object["scenicLight" + light.tag + "Tag"]
+      light.icon = formData.object["scenicLight" + light.icon + "Icon"]
+    });
+
+    console.log("LSM |", tags)
     this.render();
   }
 }
+/*
+{
+    "lanternTag": "Laterne",
+    "citywallTag": "",
+    "residenceTag": "Wohnhaus",
+    "scenicLightfa-regular fa-swordIcon": "fa-regular fa-sword",
+    "scenicLightKampfarenaTag": "Kampfarena",
+    "newScenicLightIcon": "fa-regular fa-lightbulb",
+    "newScenicLightTag": "",
+    "districtTags": [
+        "Alt-Astern",
+        "Westwall",
+        "Yaquiria",
+        "Burg",
+        "Hafen",
+        "Außerhalb",
+        ""
+    ],
+    "specialTagsAlt-AsternEfferd-Schrein": "Efferd-Schrein",
+    "specialTagsAlt-AsternKontor des Freibundes": "Kontor des Freibundes",
+    "specialTagsAlt-AsternZur Gütigen Gans": "Zur Gütigen Gans",
+    "specialTagsAlt-AsternTante Gundis Laden": "Tante Gundis Laden",
+    "specialTagsAlt-AsternNetzknüpfer Jost": "Netzknüpfer Jost",
+    "specialTagsAlt-AsternSchreinerei": "Schreinerei",
+    "specialTagsAlt-AsternSteinmetz": "Steinmetz",
+    "specialTagsAlt-AsternBrauerei": "Brauerei",
+    "specialTagsnewTag": [
+        "",
+        "",
+        "",
+        ""
+    ],
+    "specialTagsYaquiriaAlriegos Feinkostladen": "Alriegos Feinkostladen",
+    "specialTagsYaquiriaVilla Lupia": "Villa Lupia",
+    "specialTagsYaquiriaHotel Jel-Horas": "Hotel Jel-Horas",
+    "specialTagsYaquiriaMeister Alricio": "Meister Alricio",
+    "specialTagsWestwallAmirasabs Kontor": "Amirasabs Kontor",
+    "specialTagsWestwallWaffenhändlerin Gorjewa": "Waffenhändlerin Gorjewa",
+    "specialTagsWestwallPavillion von Rur und Gror": "Pavillion von Rur und Gror",
+    "specialTagsWestwallBootsbauerei Alrechin": "Bootsbauerei Alrechin",
+    "specialTagsWestwallExil": "Exil",
+    "specialTagsBurgTraviatempel": "Traviatempel",
+    "specialTagsBurgDie Halle des Leitwolfs": "Die Halle des Leitwolfs",
+    "specialTagsBurgWippfeuer": "Wippfeuer",
+    "scriptoriumTileTag": "Scriptorium",
+    "frameTileTag": "Frame",
+    "scenicTilefa-regular fa-person-diggingIcon": "fa-regular fa-person-digging",
+    "scenicTileKampfarena - BaustelleTag": "Kampfarena - Baustelle",
+    "newScenicTileIcon": "fa-regular fa-cube",
+    "newScenicTileTag": ""
+}*/

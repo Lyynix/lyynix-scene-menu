@@ -14,24 +14,28 @@
     {{#each tags.lights.scenicLights as |scenicLight|}}
     <fieldset>
       <legend>{{scenicLight.tag}}</legend>
-      <input type="text" name="{{scenicLight.icon}}Icon" id="{{scenicLight.icon}}Icon" value="{{scenicLight.icon}}">
-      <input type="text" name="{{scenicLight.tag}}Tag" id="{{scenicLight.tag}}Tag" value="{{scenicLight.tag}}">
+      <label for="scenicLight{{scenicLight.icon}}Icon">FontAwesome - Icon</label>
+      <input type="text" name="scenicLight{{scenicLight.icon}}Icon" id="scenicLight{{scenicLight.icon}}Icon" value="{{scenicLight.icon}}">
+      <label for="scenicLight{{scenicLight.tag}}Tag">Tag/Label - Leer zum löschen</label>
+      <input type="text" name="scenicLight{{scenicLight.tag}}Tag" id="scenicLight{{scenicLight.tag}}Tag" placeholder="{{scenicLight.tag}} Löschen" value="{{scenicLight.tag}}">
     </fieldset>
     {{/each}} 
     <hr>
     <fieldset>
       <legend>Neues Licht hinzufügen</legend>
-      <input type="text" name="newScenicLightIcon" id="newScenicLightIcon" placeholder="Icon" value="fa-regular fa-lightbulb">
-      <input type="text" name="newScenicLightTag" id="newScenicLightTag" placeholder="Lichter Tag">
+      <label for="newScenicLightIcon">FontAwesome - Icon</label>
+      <input type="text" class="newTag" name="newScenicLightIcon" id="newScenicLightIcon" placeholder="Icon" value="fa-regular fa-lightbulb">
+      <label for="newScenicLightTag">Tag/Label</label>
+      <input type="text" class="newTag" name="newScenicLightTag" id="newScenicLightTag" placeholder="Lichter Tag">
     </fieldset>
   </fieldset>
   <fieldset>
     <legend>Stadtteile</legend>
     {{#each tags.lights.districtTags as |districtTag|}}
-    <input type="text" name="{{districtTag}}" id="{{districtTag}}" value="{{districtTag}}">
+    <input type="text" name="districtTags" id="districtTags" placeholder="{{districtTag}} Löschen" value="{{districtTag}}">
     {{/each}}
     <hr>
-    <input type="text" name="newDistrictTag" id="newDistrictTag" placeholder="Stadtteil hinzufügen">
+    <input type="text" class="newTag" name="districtTags" id="districtTags" placeholder="Stadtteil hinzufügen">
   </fieldset>
   <fieldset>
     <legend>Stadtteil-Lichter</legend>
@@ -39,10 +43,10 @@
     <fieldset> 
       <legend>{{@key}}</legend>
       {{#each this as |tag|}}
-      <input type="text" name="{{@key}}{{tag}}" id="{{@key}}{{tag}}" value="{{tag}}">
+      <input type="text" name="specialTags{{@../key}}{{tag}}" id="specialTags{{@../key}}{{tag}}" placeholder="{{tag}} Löschen" value="{{tag}}">
       {{/each}}
       <hr>
-      <input type="text" name="{{@key}}newTag" id="{{@key}}newTag" placeholder="Licht zu {{@key}} hinzufügen">
+      <input type="text" class="newTag" name="specialTags{{@../key}}newTag" id="specialTags{{@../key}}newTag" placeholder="Licht zu {{@key}} hinzufügen">
     </fieldset>
   {{/each}}
   </fieldset>

@@ -24,7 +24,7 @@ zuerst baust du dir selbst eine JSON zusammen, die die folgende Struktur besitzt
 	"lights": {
 		"lanternTag": "Der Tag deiner Laternen-Lichter",
 		"residenceTag": "Der Tag deiner Wohnhäuser-Lichter",
-    		"citywallTag": "Der Tag deiner Stadtmauer-Lichter",
+    	"citywallTag": "Der Tag deiner Stadtmauer-Lichter",
 		"scenicLights": [
 			{
 				"tag": "Zusätzliches Licht",

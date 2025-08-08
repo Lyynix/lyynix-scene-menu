@@ -1,22 +1,6 @@
 import { CONST, TEMPLATES } from "./constants.js";
 import { MapMenuEditorApplication } from "./editor.js";
 
-class LyynixMapMenuLayer extends InteractionLayer {
-  static get layerOptions() {
-    return foundry.utils.mergeObject(super.layerOptions, {
-      name: "lyynixmapmenu",
-      canDragCreate: false,
-      controllableObjects: true,
-      rotatableObjects: true,
-      zIndex: 777,
-    });
-  }
-
-  selectObjects(options) {
-    canvas.tokens.selectObjects(options);
-  }
-}
-
 Hooks.once("init", async function () {
   foundry.applications.handlebars.loadTemplates(Object.values(TEMPLATES));
 });
@@ -33,6 +17,21 @@ Hooks.once("setup", function () {
     setByTag: LyynixMapMenuLayer.setByTag,
     setByChance: LyynixMapMenuLayer.setByChance,
   };
+
+  game.keybindings.register("lyynix-scene-menu", "editCurrentScene", {
+    name: "Szenenmenü bearbeiten",
+    hint: "Öffnet den Editor zum Bearbeiten des Szenenmenüs.",
+    uneditable: [
+      {
+        key: 'KeyE',
+        modifiers: ["Shift", "Control", "Alt"]
+      }
+    ],
+    onDown: (context) => { 
+      new MapMenuEditorApplication().render();
+    },
+    restricted: true
+  });
 })
 
 Hooks.once("ready", async function () {
@@ -40,6 +39,8 @@ Hooks.once("ready", async function () {
     return variable.replace(/(['"])/g, '\\$1');
   });
 });
+
+
 
 class LyynixMapMenuLayer extends foundry.canvas.layers.InteractionLayer {
   static get layerOptions() {

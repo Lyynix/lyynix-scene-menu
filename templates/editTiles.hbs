@@ -1,7 +1,7 @@
 <section class='tab tiles {{tab.cssClass}}' data-group='primary' data-tab='tiles' style="overflow-y: scroll;">
   <hr>
   <fieldset>
-    <legend>Generelle Lichter</legend>
+    <legend>Generelle Kacheln</legend>
     <label for="scriptoriumTileTag">Tag für Scriptorium Logo</label>
     <input type="text" name="scriptoriumTileTag" id="scriptoriumTileTag" value="{{tags.tiles.scriptoriumTileTag}}">
     <label for="frameTileTag">Tag für den Kartenrahmen</label>
@@ -12,15 +12,19 @@
     {{#each tags.tiles.scenicTiles as |scenicTile|}}
     <fieldset>
       <legend>{{scenicTile.tag}}</legend>
-      <input type="text" name="{{scenicTile.icon}}Icon" id="{{scenicTile.icon}}Icon" value="{{scenicTile.icon}}">
-      <input type="text" name="{{scenicTile.tag}}Tag" id="{{scenicTile.tag}}Tag" value="{{scenicTile.tag}}">
+      <label for="scenicTile{{scenicTile.icon}}Icon">FontAwesome - Icon</label>
+      <input type="text" name="scenicTile{{scenicTile.icon}}Icon" id="scenicTile{{scenicTile.icon}}Icon" value="{{scenicTile.icon}}">
+      <label for="scenicTile{{scenicTile.tag}}Tag">Tag/Label - Leer zum löschen</label>
+      <input type="text" name="scenicTile{{scenicTile.tag}}Tag" id="scenicTile{{scenicTile.tag}}Tag" placeholder="{{scenicTile.tag}} Löschen" value="{{scenicTile.tag}}">
     </fieldset>
     {{/each}} 
     <hr>
     <fieldset>
       <legend>Neue Kachel hinzufügen</legend>
-      <input type="text" name="newScenicTileIcon" id="newScenicTileIcon" placeholder="Icon" value="fa-regular fa-cube">
-      <input type="text" name="newScenicTileTag" id="newScenicTileTag" placeholder="Kachel Tag">
+      <label for="newScenicTileIcon">FontAwesome - Icon</label>
+      <input type="text" class="newTag" name="newScenicTileIcon" id="newScenicTileIcon" placeholder="Icon" value="fa-regular fa-cube">
+      <label for="newScenicTileTag">Tag/Label</label>
+      <input type="text" class="newTag" name="newScenicTileTag" id="newScenicTileTag" placeholder="Kachel Tag">
     </fieldset>
   </fieldset>
 </section>
