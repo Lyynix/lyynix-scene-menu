@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../systems/dsa5"
+		},
+		{
+			"path": "../../../../foundrydev"
+		}
+	],
+	"settings": {}
+}
