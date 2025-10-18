@@ -1,8 +1,8 @@
-<form>
+<form class="dialog-form standard-form" style="height: 100%; overflow-y: auto;">
   <div class="form-group">
     <span style="min-width: 100px;">Alle Lichter</span>
-    <button type="button" onclick="lyynixMapMenu.setAll(true)">On</button>
-    <button type="button" onclick="lyynixMapMenu.setAll(false)">Off</button>
+    <button type="button" data-action="setAll" data-on="">On</button>
+    <button type="button" data-action="setAll">Off</button>
   </div>
   {{#each districts as |district|}}
   {{#if district.tags}}
@@ -11,9 +11,9 @@
     {{#each district.tags as |tag|}}
     <div class="form-group">
       <span style="min-width: 100px;">{{tag}}</span>
-      <button type="button" onclick="lyynixMapMenu.setByTag('{{escape tag}}', true)">On</button>
-      <button type="button" onclick="lyynixMapMenu.setByChance('{{escape tag}}', 0.5)">50%</button>
-      <button type="button" onclick="lyynixMapMenu.setByTag('{{escape tag}}', false)">Off</button>
+      <button type="button" data-action="setByTag" data-tag="{{escape tag}}" data-on="" data-docType="AmbientLight">On</button>
+      <button type="button" data-action="setByChance" data-tag="{{escape tag}}" data-probability="0.5">50%</button>
+      <button type="button" data-action="setByTag" data-tag="{{escape tag}}" data-docType="AmbientLight">Off</button>
     </div>
     {{/each}}
   </fieldset>
